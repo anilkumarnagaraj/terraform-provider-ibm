@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"github.com/apache/openwhisk-client-go/whisk"
+	"github.com/IBM/ibm-cos-sdk-go-config/resourceconfigurationv1"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/softlayer/softlayer-go/datatypes"
 	"github.com/softlayer/softlayer-go/sl"
@@ -22,6 +23,7 @@ import (
 	"github.com/IBM-Cloud/bluemix-go/api/container/containerv1"
 	"github.com/IBM-Cloud/bluemix-go/api/container/containerv2"
 	"github.com/IBM-Cloud/bluemix-go/api/iampap/iampapv1"
+	"github.com/IBM-Cloud/bluemix-go/api/iampap/iampapv2"
 	"github.com/IBM-Cloud/bluemix-go/api/iamuum/iamuumv1"
 	"github.com/IBM-Cloud/bluemix-go/api/iamuum/iamuumv2"
 	"github.com/IBM-Cloud/bluemix-go/api/icd/icdv4"
@@ -625,6 +627,36 @@ func expandLimits(l []interface{}) *whisk.Limits {
 		Logsize: ptrToInt(in["log_size"].(int)),
 	}
 	return obj
+}
+
+func flattenActivityTrack(in *resourceconfigurationv1.ActivityTracking) []interface{} {
+
+	att := make(map[string]interface{})
+	if in != nil {
+		if in.ReadDataEvents != nil {
+			att["read_data_events"] = *in.ReadDataEvents
+		}
+		if in.WriteDataEvents != nil {
+			att["write_data_events"] = *in.WriteDataEvents
+		}
+		if in.ActivityTrackerCrn != nil {
+			att["activity_tracker_crn"] = *in.ActivityTrackerCrn
+		}
+	}
+	return []interface{}{att}
+}
+
+func flattenMetricsMonitor(in *resourceconfigurationv1.MetricsMonitoring) []interface{} {
+	att := make(map[string]interface{})
+	if in != nil {
+		if in.UsageMetricsEnabled != nil {
+			att["usage_metrics_enabled"] = *in.UsageMetricsEnabled
+		}
+		if in.MetricsMonitoringCrn != nil {
+			att["metrics_monitoring_crn"] = *in.MetricsMonitoringCrn
+		}
+	}
+	return []interface{}{att}
 }
 
 func flattenLimits(in *whisk.Limits) []interface{} {
@@ -1635,16 +1667,37 @@ func resourceTagsCustomizeDiff(diff *schema.ResourceDiff) error {
 	return nil
 }
 
-func flattenCseIPs(list []VPCCSESourceIP) []map[string]interface{} {
-	cseIPsInfo := make([]map[string]interface{}, 0)
-	for _, object := range list {
-		l := map[string]interface{}{
-			"address":   object.Address,
-			"zone_name": object.ZoneName,
-		}
-		cseIPsInfo = append(cseIPsInfo, l)
+func flattenRoleData(object []iampapv2.Role, roleType string) []map[string]string {
+	var roles []map[string]string
+
+	for _, item := range object {
+		role := make(map[string]string)
+		role["name"] = item.DisplayName
+		role["type"] = roleType
+		role["description"] = item.Description
+		roles = append(roles, role)
 	}
-	return cseIPsInfo
+	return roles
+}
+
+func flattenActions(object []iampapv2.Role) map[string]interface{} {
+	actions := map[string]interface{}{
+		"reader":      flattenActionbyDisplayName("Reader", object),
+		"manager":     flattenActionbyDisplayName("Manager", object),
+		"reader_plus": flattenActionbyDisplayName("ReaderPlus", object),
+		"writer":      flattenActionbyDisplayName("Writer", object),
+	}
+	return actions
+}
+
+func flattenActionbyDisplayName(displayName string, object []iampapv2.Role) []string {
+	var actionIDs []string
+	for _, role := range object {
+		if role.DisplayName == displayName {
+			actionIDs = role.Actions
+		}
+	}
+	return actionIDs
 }
 
 func flattenCatalogRef(object schematics.CatalogInfo) map[string]interface{} {
@@ -1672,4 +1725,19 @@ func isErrorToString(err error) string {
 		return retmsg
 	}
 	return err.Error()
+}
+
+// GetNext ...
+func GetNext(next interface{}) string {
+	if reflect.ValueOf(next).IsNil() {
+		return ""
+	}
+
+	u, err := url.Parse(reflect.ValueOf(next).Elem().FieldByName("Href").Elem().String())
+	if err != nil {
+		return ""
+	}
+
+	q := u.Query()
+	return q.Get("start")
 }

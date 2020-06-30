@@ -94,9 +94,9 @@ func resourceIBMISInstance() *schema.Resource {
 		Importer: &schema.ResourceImporter{},
 
 		Timeouts: &schema.ResourceTimeout{
-			Create: schema.DefaultTimeout(10 * time.Minute),
-			Delete: schema.DefaultTimeout(10 * time.Minute),
-			Update: schema.DefaultTimeout(10 * time.Minute),
+			Create: schema.DefaultTimeout(30 * time.Minute),
+			Delete: schema.DefaultTimeout(30 * time.Minute),
+			Update: schema.DefaultTimeout(30 * time.Minute),
 		},
 
 		CustomizeDiff: customdiff.Sequence(
@@ -1758,7 +1758,6 @@ func classicInstanceDelete(d *schema.ResourceData, meta interface{}, id string) 
 			if err != nil {
 				return err
 			}
-			break
 		}
 		if *vol.Type == "boot" {
 			bootvolid = *vol.Volume.ID
@@ -1839,7 +1838,6 @@ func instanceDelete(d *schema.ResourceData, meta interface{}, id string) error {
 			if err != nil {
 				return err
 			}
-			break
 		}
 		if *vol.Type == "boot" {
 			bootvolid = *vol.Volume.ID
