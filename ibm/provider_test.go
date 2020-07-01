@@ -335,7 +335,6 @@ func init() {
 		fmt.Println("[INFO] Set the environment variable SL_ROUTE_NEXTHOP for testing ibm_is_vpc_route else it is set to default value '10.0.0.4'")
 	}
 
-<<<<<<< HEAD
 	imageName = os.Getenv("SL_IMAGE_NAME")
 	if imageName == "" {
 		imageName = "ubuntu-18.04-amd64" // for classic infrastructure
@@ -349,8 +348,6 @@ func init() {
 		fmt.Println("[INFO] Set the environment variable IBM_FUNCTION_NAMESPACE for testing ibm_function_package, ibm_function_action, ibm_function_rule, ibm_function_trigger resource else  tests will fail if this is not set correctly")
 	}
 
-=======
->>>>>>> 4a6664ff625d188991437b2326c2e11c545f6938
 	// Added for Power Colo Testing
 	pi_image = os.Getenv("PI_IMAGE")
 	if pi_image == "" {

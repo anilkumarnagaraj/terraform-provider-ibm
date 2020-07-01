@@ -80,13 +80,10 @@ github.com/IBM/go-sdk-core v3.0.0+incompatible h1:1QYh6UklIvEBW3qwVf2xDiFZtKa+Pi
 github.com/IBM/go-sdk-core/v3 v3.0.0/go.mod h1:JI5NS2+iCoY/D8Oq3JNEZNA7qO42agu6fnaUmDsRcJA=
 github.com/IBM/go-sdk-core/v3 v3.2.4 h1:WKYJYYKlZnw1y/gM+Qbf5EQVAL9xaoD54+ooJZz/iBQ=
 github.com/IBM/go-sdk-core/v3 v3.2.4/go.mod h1:lk9eOzNbNltPf3CBpcg1Ewkhw4qC3u2QCCKDRsUA2M0=
-<<<<<<< HEAD
 github.com/IBM/go-sdk-core/v3 v3.3.1 h1:DoXjP1+Wm8Yd4XJsvBMRcYLvQwSLFnzKlMjSrg3Rzpw=
 github.com/IBM/go-sdk-core/v3 v3.3.1/go.mod h1:lk9eOzNbNltPf3CBpcg1Ewkhw4qC3u2QCCKDRsUA2M0=
-=======
 github.com/IBM/go-sdk-core/v4 v4.0.2 h1:Ab+prxqeZHnYrLwZ8D3NIw7E1wpSSoEEIeYLwrZwrvQ=
 github.com/IBM/go-sdk-core/v4 v4.0.2/go.mod h1:lTUXbqIX6/aAbSCkP6q59+dyFsTwZAc0ewRS2vJWVbg=
->>>>>>> 4a6664ff625d188991437b2326c2e11c545f6938
 github.com/IBM/ibm-cos-sdk-go v1.2.0 h1:oJG2eWmAhmz3XAkQLsmQweT7hmxoM3jKQkwLBZz6b5o=
 github.com/IBM/ibm-cos-sdk-go v1.2.0/go.mod h1:YLBAYobEA8bD27P7xpMwSQeNQu6W3DNBtBComXrRzRY=
 github.com/IBM/ibm-cos-sdk-go v1.3.1 h1:6SHueqFpznp7S/9b39/WiJ9mt3TgD322j2pArzyd/c8=
@@ -119,9 +116,10 @@ github.com/antchfx/xpath v0.0.0-20190129040759-c8489ed3251e/go.mod h1:Yee4kTMuNi
 github.com/antchfx/xquery v0.0.0-20180515051857-ad5b8c7a47b0/go.mod h1:LzD22aAzDP8/dyiCKFp31He4m2GPjl0AFyzDtZzUu9M=
 github.com/apache/incubator-openwhisk-client-go v0.0.0-20171128215515-ad814bc98c32 h1:u4mxj01IJyxfqxFRfpyCbYH/hZEkjMEjdu70Rt0Ax1s=
 github.com/apache/incubator-openwhisk-client-go v0.0.0-20171128215515-ad814bc98c32/go.mod h1:tkMtcI5DHxdNk03R1YVLF66VhkF8uJkZs7pgHE9Mgqk=
+github.com/apache/incubator-openwhisk-client-go v0.0.0-20200201143223-a804fb82d105 h1:te9jteXtOdT9l5B44/F2tnEYjSqIEVjnFx/Dpwm9KZ4=
+github.com/apache/incubator-openwhisk-client-go v0.0.0-20200201143223-a804fb82d105/go.mod h1:tkMtcI5DHxdNk03R1YVLF66VhkF8uJkZs7pgHE9Mgqk=
 github.com/apache/openwhisk-client-go v0.0.0-20200201143223-a804fb82d105 h1:k1wP1gZMrNJeXTz6a+3010NKC/ZvSffk07BzrLmYrmc=
 github.com/apache/openwhisk-client-go v0.0.0-20200201143223-a804fb82d105/go.mod h1:jLLKYP7+1+LFlIJW1n9U1gqeveLM1HIwa4ZHNOFxjPw=
-github.com/apache/incubator-openwhisk-client-go v0.0.0-20200201143223-a804fb82d105 h1:te9jteXtOdT9l5B44/F2tnEYjSqIEVjnFx/Dpwm9KZ4=
 github.com/apparentlymart/go-cidr v1.0.1 h1:NmIwLZ/KdsjIUlhf+/Np40atNXm/+lZ5txfTJ/SpF+U=
 github.com/apparentlymart/go-cidr v1.0.1/go.mod h1:EBcsNrHc3zQeuaeCeCtQruQm+n9/YjEn/vI25Lg7Gwc=
 github.com/apparentlymart/go-dump v0.0.0-20180507223929-23540a00eaa3/go.mod h1:oL81AME2rN47vu18xqj1S1jPIPuN7afo62yKTNn3XMM=

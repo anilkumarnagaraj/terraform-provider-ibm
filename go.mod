@@ -9,16 +9,12 @@ require (
 	github.com/IBM/apigateway-go-sdk v0.0.0-20200414212859-416e5948678a
 	github.com/IBM/cloudpakfordata-go-sdk v0.0.0-20191003093330-fead1522985f // indirect
 	github.com/IBM/dns-svcs-go-sdk v0.0.3
-<<<<<<< HEAD
 	github.com/IBM/go-sdk-core v1.1.0
 	github.com/IBM/go-sdk-core/v3 v3.3.1
-	github.com/IBM/ibm-cos-sdk-go v1.2.0
-=======
-	github.com/IBM/go-sdk-core/v3 v3.2.4
 	github.com/IBM/ibm-cos-sdk-go v1.3.1
 	github.com/IBM/ibm-cos-sdk-go-config v1.0.0
->>>>>>> 4a6664ff625d188991437b2326c2e11c545f6938
 	github.com/IBM/keyprotect-go-client v0.3.5-0.20200325142150-b63163832e26
+	github.com/apache/incubator-openwhisk-client-go v0.0.0-20200201143223-a804fb82d105
 	github.com/apache/openwhisk-client-go v0.0.0-20200201143223-a804fb82d105
 	github.com/apparentlymart/go-cidr v1.0.1
 	github.com/cloudfoundry/jibber_jabber v0.0.0-20151120183258-bcc4c8345a21 // indirect
@@ -46,11 +42,9 @@ require (
 	github.com/zclconf/go-cty v1.2.1 // indirect
 	github.ibm.com/Bluemix/riaas-go-client v0.0.0-20191018070922-afd27ac04d4f
 	github.ibm.com/ibmcloud/namespace-go-sdk v0.0.0-00010101000000-000000000000
-	github.ibm.com/ibmcloud/vpc-go-sdk v0.0.0-00010101000000-000000000000
-	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	github.ibm.com/ibmcloud/networking-go-sdk v0.0.0-00010101000000-000000000000
 	github.ibm.com/ibmcloud/vpc-go-sdk v0.0.0-00010101000000-000000000000
-	golang.org/x/xerrors v0.0.0-20191011141410-1b5146add898 // indirect
+	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 )
 
 replace github.ibm.com/Bluemix/riaas-go-client v0.0.0-20191018070922-afd27ac04d4f => ./common/github.ibm.com/Bluemix/riaas-go-client
