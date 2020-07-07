@@ -419,6 +419,10 @@ func Validator() ValidatorDict {
 				"ibm_dl_virtual_connection": resourceIBMdlGatewayVCValidator(),
 				"ibm_dl_gateway":            resourceIBMDLGatewayValidator(),
 				"ibm_dl_offering_speeds":    datasourceIBMDLOfferingSpeedsValidator(),
+				"ibm_function_package":      resourceIBMFuncPackageValidator(),
+				"ibm_function_action":       resourceIBMFuncActionValidator(),
+				"ibm_function_rule":         resourceIBMFuncRuleValidator(),
+				"ibm_function_trigger":      resourceIBMFuncTriggerValidator(),
 			},
 		}
 	})

@@ -114,7 +114,7 @@ func dataSourceIBMFunctionActionRead(d *schema.ResourceData, meta interface{}) e
 	actionService := wskClient.Actions
 	name := d.Get("name").(string)
 
-	action, _, err := actionService.Get(name)
+	action, _, err := actionService.Get(name, true)
 	if err != nil {
 		return fmt.Errorf("Error retrieving IBM Cloud Function Action %s : %s", name, err)
 	}

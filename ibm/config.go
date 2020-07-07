@@ -16,7 +16,7 @@ import (
 	"github.com/IBM/go-sdk-core/v3/core"
 	cosconfig "github.com/IBM/ibm-cos-sdk-go-config/resourceconfigurationv1"
 	kp "github.com/IBM/keyprotect-go-client"
-	"github.com/apache/incubator-openwhisk-client-go/whisk"
+	"github.com/apache/openwhisk-client-go/whisk"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/go-openapi/strfmt"
 	slsession "github.com/softlayer/softlayer-go/session"
@@ -544,7 +544,7 @@ func (c *Config) ClientSession() (interface{}, error) {
 		sess.SoftLayerSession.IAMRefreshToken = sess.BluemixSession.Config.IAMRefreshToken
 	}
 
-	session.functionClient, session.functionConfigErr = FunctionClient(sess.BluemixSession.Config, c.FunctionNameSpace)
+	session.functionClient, session.functionConfigErr = FunctionClient(sess.BluemixSession.Config)
 
 	BluemixRegion = sess.BluemixSession.Config.Region
 

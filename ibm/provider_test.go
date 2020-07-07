@@ -57,6 +57,7 @@ var ISRouteNextHop string
 var workspaceID string
 var templateID string
 var imageName string
+var functionNamespace string
 
 // For Power Colo
 
@@ -305,6 +306,12 @@ func init() {
 	if ISAddressPrefixCIDR == "" {
 		ISAddressPrefixCIDR = "10.120.0.0/24"
 		fmt.Println("[INFO] Set the environment variable SL_ADDRESS_PREFIX_CIDR for testing ibm_is_vpc_address_prefix else it is set to default value '10.120.0.0/24'")
+	}
+
+	functionNamespace = os.Getenv("IBM_FUNCTION_NAMESPACE")
+	if functionNamespace == "" {
+		functionNamespace = ""
+		fmt.Println("[INFO] Set the environment variable IBM_FUNCTION_NAMESPACE for testing ibm_function_package, ibm_function_action, ibm_function_rule, ibm_function_trigger resource else  tests will fail if this is not set correctly")
 	}
 
 	isImage = os.Getenv("IS_IMAGE")
