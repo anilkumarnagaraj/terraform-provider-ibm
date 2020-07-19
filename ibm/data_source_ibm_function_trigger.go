@@ -17,6 +17,11 @@ func dataSourceIBMFunctionTrigger() *schema.Resource {
 				Required:    true,
 				Description: "Name of Trigger.",
 			},
+			"namespace": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Name of the namespace.",
+			},
 			"publish": {
 				Type:        schema.TypeBool,
 				Computed:    true,
@@ -47,6 +52,18 @@ func dataSourceIBMFunctionTriggerRead(d *schema.ResourceData, meta interface{}) 
 	if err != nil {
 		return err
 	}
+
+	bxSession, err := meta.(ClientSession).BluemixSession()
+	if err != nil {
+		return err
+	}
+	namespace := d.Get("namespace").(string)
+	wskClient, err = setupOpenWhiskClientConfig(namespace, bxSession.Config, wskClient)
+	if err != nil {
+		return err
+
+	}
+
 	triggerService := wskClient.Triggers
 	name := d.Get("name").(string)
 
@@ -57,6 +74,7 @@ func dataSourceIBMFunctionTriggerRead(d *schema.ResourceData, meta interface{}) 
 
 	d.SetId(trigger.Name)
 	d.Set("name", trigger.Name)
+	d.Set("namespace", namespace)
 	d.Set("publish", trigger.Publish)
 	d.Set("version", trigger.Version)
 	annotations, err := flattenAnnotations(trigger.Annotations)

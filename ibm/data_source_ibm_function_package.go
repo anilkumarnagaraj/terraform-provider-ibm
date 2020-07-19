@@ -17,6 +17,11 @@ func dataSourceIBMFunctionPackage() *schema.Resource {
 				Required:    true,
 				Description: "Name of the package.",
 			},
+			"namespace": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Name of the namespace.",
+			},
 			"publish": {
 				Type:        schema.TypeBool,
 				Computed:    true,
@@ -54,9 +59,20 @@ func dataSourceIBMFunctionPackageRead(d *schema.ResourceData, meta interface{}) 
 	if err != nil {
 		return err
 	}
+
+	bxSession, err := meta.(ClientSession).BluemixSession()
+	if err != nil {
+		return err
+	}
+	namespace := d.Get("namespace").(string)
+	wskClient, err = setupOpenWhiskClientConfig(namespace, bxSession.Config, wskClient)
+	if err != nil {
+		return err
+
+	}
+
 	packageService := wskClient.Packages
 	name := d.Get("name").(string)
-
 	pkg, _, err := packageService.Get(name)
 	if err != nil {
 		return fmt.Errorf("Error retrieving IBM Cloud Function package %s : %s", name, err)
@@ -64,6 +80,7 @@ func dataSourceIBMFunctionPackageRead(d *schema.ResourceData, meta interface{}) 
 
 	d.SetId(pkg.Name)
 	d.Set("name", pkg.Name)
+	d.Set("namespace", namespace)
 	d.Set("publish", pkg.Publish)
 	d.Set("version", pkg.Version)
 	annotations, err := flattenAnnotations(pkg.Annotations)
