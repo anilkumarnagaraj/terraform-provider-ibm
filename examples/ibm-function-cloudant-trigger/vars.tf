@@ -1,37 +1,37 @@
 variable "namespace" {
-  default = ""
+  default = "Namespace-10"
 }
 
 variable "packageName" {
-  default = "utils"
+  default = "tutils1"
 }
 
 variable "actionName" {
-  default = "hello"
+  default = "thello1"
 }
 
 variable "boundPackageName" {
-  default = "mycloudant"
+  default = "tmycloudant"
 }
 
 variable "triggerName" {
-  default = "myCloudantTrigger"
+  default = "tmyCloudantTrigger"
 }
 
 variable "ruleName" {
-  default = "cloudantRule"
+  default = "tcloudantRule"
 }
 
 variable "dbname" {
-  default = "databasedemo"
+  default = "tdatabasedemo"
 }
 
 variable "space" {
-  default = "space"
+  default = "dev"
 }
 
 variable "org" {
-  default = "org"
+  default = "namespacecf"
 }
 
 variable "service" {
@@ -39,15 +39,15 @@ variable "service" {
 }
 
 variable "plan" {
-  default = "Lite"
+  default = "standard"
 }
 
 variable "service_instance_name" {
-  default = "mycloudantdb"
+  default = "tmycloudantdb"
 }
 
 variable "service_key_name" {
-  default = "mycloudantdbkey"
+  default = "tmycloudantdbkey"
 }
 
 variable "app_version" {
@@ -67,11 +67,11 @@ variable "app_zip" {
 }
 
 variable "route" {
-  default = "my-app-cloudant"
+  default = "tmy-app-cloudant"
 }
 
 variable "app_name" {
-  default = "myapp"
+  default = "tmyapp"
 }
 
 variable "app_command" {
