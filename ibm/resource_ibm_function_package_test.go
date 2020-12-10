@@ -527,7 +527,7 @@ func testAccCheckIAMFunctionPackageCreate(name string, namespace string) string 
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -557,7 +557,7 @@ func testAccCheckIAMFunctionPackageNameUpdate(updatedName string, namespace stri
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -585,7 +585,7 @@ func testAccCheckIAMFunctionPackageWithAnnotations(name string, namespace string
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -667,7 +667,7 @@ func testAccCheckIAMFunctionPackageWithAnnotationsUpdate(name string, namespace 
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -715,7 +715,7 @@ func testAccCheckIAMFunctionPackageWithParameters(name string, namespace string)
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -819,7 +819,7 @@ func testAccCheckIAMFunctionPackageWithParametersUpdate(name string, namespace s
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -891,7 +891,7 @@ func testAccCheckIAMFunctionPackageImport(name string, namespace string) string 
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -923,7 +923,7 @@ func testAccCheckIAMFunctionPackageUpdatePublish(name string, namespace string) 
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -993,7 +993,7 @@ func testAccCheckIAMFunctionPackageBindCreate(name, namespace, bind string) stri
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -1026,7 +1026,7 @@ func testAccCheckIAMFunctionPackageNameBindUpdate(updatedName, namespace, bind s
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -1055,7 +1055,7 @@ func testAccCheckIAMFunctionPackageBindWithAnnotations(name, namespace, bind str
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -1139,7 +1139,7 @@ func testAccCheckIAMFunctionPackageBindWithAnnotationsUpdate(name, namespace, bi
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -1191,7 +1191,7 @@ func testAccCheckIAMFunctionPackageBindWithParameters(name, namespace, bind stri
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -1287,7 +1287,7 @@ func testAccCheckIAMFunctionPackageBindWithParametersUpdate(name, namespace, bin
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
@@ -1359,7 +1359,7 @@ func testAccCheckIAMFunctionPackageBindUpdatePublish(name, namespace, bind strin
 	return fmt.Sprintf(`
 
 	data "ibm_resource_group" "test_acc" {
-		name = "Default"
+		name = "default"
 	}
 
 	resource "ibm_function_namespace" "namespace" {
