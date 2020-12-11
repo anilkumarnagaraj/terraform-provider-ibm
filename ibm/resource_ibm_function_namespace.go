@@ -100,7 +100,8 @@ func resourceIBMFunctionNamespaceCreate(d *schema.ResourceData, meta interface{}
 	}
 
 	d.SetId(*namespace.ID)
-	log.Printf("[INFO] Created namespace (IAM) : %s", *namespace.Name)
+	log.Printf("[INFO] >> Created namespace (IAM) : %s", *namespace.Name)
+	log.Printf("[INFO] >> Created namespace (IAM) : %s", *namespace.ID)
 
 	return resourceIBMFunctionNamespaceRead(d, meta)
 }
@@ -111,18 +112,34 @@ func resourceIBMFunctionNamespaceRead(d *schema.ResourceData, meta interface{}) 
 		return err
 	}
 
+	bxSession, err := meta.(ClientSession).BluemixSession()
+	if err != nil {
+		return err
+	}
+
 	ID := d.Id()
 
+	payload := make(map[string]string)
+	payload["Authorization"] = bxSession.Config.IAMAccessToken
+	log.Printf("[INFO] IAMACCESSTOKEN : %v\n", bxSession.Config.IAMAccessToken)
 	getOptions := &ibmcloudfunctionsnamespaceapiv1.GetNamespaceOptions{
-		ID: &ID,
+		ID:      &ID,
+		Headers: payload,
 	}
 	instance, response, err := nsClient.GetNamespace(getOptions)
+	log.Printf("[INFO] >> instance : %v\n", instance)
+	log.Printf("[INFO] >> response : %v\n", response)
+	log.Printf("[INFO] >> StatusCode : %v\n", response.StatusCode)
+	log.Printf("[INFO] err: %v\n", err)
 	if err != nil {
 		if response != nil && response.StatusCode == 404 {
 			d.SetId("")
 			return nil
 		}
 	}
+
+	log.Printf("[INFO] instance : %v\n", instance.ID)
+	log.Printf("[INFO] *instance : %v\n", *instance.ID)
 
 	if instance.ID != nil {
 		d.SetId(*instance.ID)
@@ -182,10 +199,18 @@ func resourceIBMFunctionNamespaceDelete(d *schema.ResourceData, meta interface{}
 		return err
 	}
 
+	bxSession, err := meta.(ClientSession).BluemixSession()
+	if err != nil {
+		return err
+	}
+
 	ID := d.Id()
 
+	payload := make(map[string]string)
+	payload["Authorization"] = bxSession.Config.IAMAccessToken
 	delOptions := &ibmcloudfunctionsnamespaceapiv1.DeleteNamespaceOptions{
-		ID: &ID,
+		ID:      &ID,
+		Headers: payload,
 	}
 	response, err := nsClient.DeleteNamespace(delOptions)
 	if err != nil && response.StatusCode != 404 {
@@ -202,10 +227,18 @@ func resourceIBMFunctionNamespaceExists(d *schema.ResourceData, meta interface{}
 		return false, err
 	}
 
+	bxSession, err := meta.(ClientSession).BluemixSession()
+	if err != nil {
+		return false, err
+	}
+
 	ID := d.Id()
 
+	payload := make(map[string]string)
+	payload["Authorization"] = bxSession.Config.IAMAccessToken
 	getOptions := &ibmcloudfunctionsnamespaceapiv1.GetNamespaceOptions{
-		ID: &ID,
+		ID:      &ID,
+		Headers: payload,
 	}
 	_, response, err := nsClient.GetNamespace(getOptions)
 	if err != nil && response.StatusCode == 404 {

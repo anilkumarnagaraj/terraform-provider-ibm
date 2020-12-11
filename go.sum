@@ -35,6 +35,8 @@ github.com/IBM-Cloud/bluemix-go v0.0.0-20201210085054-cdf09378fdd9/go.mod h1:gPJ
 github.com/IBM-Cloud/ibm-cloud-cli-sdk v0.6.7/go.mod h1:RiUvKuHKTBmBApDMUQzBL14pQUGKcx/IioKQPIcRQjs=
 github.com/IBM-Cloud/power-go-client v1.0.53 h1:v29RRy5S3z950rgOXGEHab4h0LI9L8/8qot30JjmQXs=
 github.com/IBM-Cloud/power-go-client v1.0.53/go.mod h1:+mOxjyLeLIloR4EMHTpiDbN+FilZpiVHTwu5eqi+cbI=
+github.com/IBM-Cloud/terraform-provider-ibm/common/github.ibm.com/ibmcloud/namespace-go-sdk v0.0.0-20201210135529-44e81767a24c h1:n7hytTSQ6uiSzjD6hH2iGIFWU43D7ZZNAltFx94qUpo=
+github.com/IBM-Cloud/terraform-provider-ibm/common/github.ibm.com/ibmcloud/namespace-go-sdk v0.0.0-20201210135529-44e81767a24c/go.mod h1:NnAKdJGO/hW1bmE7Nmrm0Tp3BtJbrrjAEebJ1AkDN8s=
 github.com/IBM/apigateway-go-sdk v0.0.0-20200414212859-416e5948678a h1:lX3vP+9Y5gTP0w6l+4oL0mvNfgXZYJsMdlsiUG43GBw=
 github.com/IBM/apigateway-go-sdk v0.0.0-20200414212859-416e5948678a/go.mod h1:sNVpGpUv3jvA2dQbRPFjVrRFNdmnQrf2QTtKa/c2XrI=
 github.com/IBM/cloudpakfordata-go-sdk v0.0.0-20191003093330-fead1522985f/go.mod h1:j6hKoyzMruySTcVstW/FLiu2ZewGukmgSeVGaDYY9hY=
