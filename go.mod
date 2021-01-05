@@ -10,6 +10,7 @@ require (
 	github.com/IBM/go-sdk-core v1.1.0
 	github.com/IBM/go-sdk-core/v3 v3.3.1
 	github.com/IBM/go-sdk-core/v4 v4.9.0
+	github.com/IBM/go-sdk-core/v5 v5.0.3 // indirect
 	github.com/IBM/ibm-cos-sdk-go v1.3.1
 	github.com/IBM/ibm-cos-sdk-go-config v1.0.1
 	github.com/IBM/keyprotect-go-client v0.5.2
@@ -42,9 +43,12 @@ require (
 	github.com/renier/xmlrpc v0.0.0-20170708154548-ce4a1a486c03 // indirect
 	github.com/satori/go.uuid v1.2.0
 	github.com/softlayer/softlayer-go v0.0.0-20190814165317-b9062a914a22
+	github.ibm.com/ibmcloud/kubernetesservice-go-sdk v0.0.0-00010101000000-000000000000
 	golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad
 	golang.org/x/tools v0.0.0-20210107193943-4ed967dd8eff // indirect
 	gotest.tools v2.2.0+incompatible
 )
 
 replace github.com/softlayer/softlayer-go v0.0.0-20190814165317-b9062a914a22 => ./common/github.com/softlayer/softlayer-go
+
+replace github.ibm.com/ibmcloud/kubernetesservice-go-sdk => ./common/github.ibm.com/ibmcloud/kubernetesservice-go-sdk

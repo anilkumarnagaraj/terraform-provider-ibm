@@ -2,6 +2,3 @@
 # Output 
 #################################################
 
-output "assignout" {
-  value = module.assign.trigger
-}

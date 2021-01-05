@@ -59,6 +59,7 @@ import (
 	"github.com/apache/openwhisk-client-go/whisk"
 	jwt "github.com/dgrijalva/jwt-go"
 	slsession "github.com/softlayer/softlayer-go/session"
+	sat "github.ibm.com/ibmcloud/kubernetesservice-go-sdk/kubernetesserviceapiv1"
 
 	bluemix "github.com/IBM-Cloud/bluemix-go"
 	"github.com/IBM-Cloud/bluemix-go/api/account/accountv1"
@@ -244,6 +245,7 @@ type ClientSession interface {
 	CisWAFRuleClientSession() (*ciswafrulev1.WafRulesApiV1, error)
 	IAMIdentityV1API() (*iamidentity.IamIdentityV1, error)
 	ResourceManagerV2API() (*resourcemanager.ResourceManagerV2, error)
+	SatelliteServiceV1() (*sat.KubernetesServiceApiV1, error)
 }
 
 type clientSession struct {
@@ -458,6 +460,10 @@ type clientSession struct {
 	//Resource Manager Option
 	resourceManagerErr error
 	resourceManagerAPI *resourcemanager.ResourceManagerV2
+
+	//Satellite service
+	satelliteService    *sat.KubernetesServiceApiV1
+	satelliteServiceErr error
 }
 
 // BluemixAcccountAPI ...
@@ -837,6 +843,11 @@ func (sess clientSession) IAMIdentityV1API() (*iamidentity.IamIdentityV1, error)
 // ResourceMAanger Session
 func (sess clientSession) ResourceManagerV2API() (*resourcemanager.ResourceManagerV2, error) {
 	return sess.resourceManagerAPI, sess.resourceManagerErr
+}
+
+// Session to the Satellite service
+func (sess clientSession) SatelliteServiceV1() (*sat.KubernetesServiceApiV1, error) {
+	return sess.satelliteService, sess.satelliteServiceErr
 }
 
 // ClientSession configures and returns a fully initialized ClientSession
@@ -1611,6 +1622,25 @@ func (c *Config) ClientSession() (interface{}, error) {
 		resourceManagerClient.EnableRetries(c.RetryCount, c.RetryDelay)
 	}
 	session.resourceManagerAPI = resourceManagerClient
+
+	bluemixToken := ""
+	if strings.HasPrefix(sess.BluemixSession.Config.IAMAccessToken, "Bearer") {
+		bluemixToken = sess.BluemixSession.Config.IAMAccessToken[7:len(sess.BluemixSession.Config.IAMAccessToken)]
+	} else {
+		bluemixToken = sess.BluemixSession.Config.IAMAccessToken
+	}
+
+	kubernetesServiceV1Options := &sat.KubernetesServiceApiV1Options{
+		URL: envFallBack([]string{"IBMCLOUD_SATELLITE_API_ENDPOINT"}, "https://containers.cloud.ibm.com/global"),
+		Authenticator: &core.BearerTokenAuthenticator{
+			BearerToken: bluemixToken,
+		},
+	}
+
+	session.satelliteService, err = sat.NewKubernetesServiceApiV1(kubernetesServiceV1Options)
+	if err != nil {
+		session.satelliteServiceErr = fmt.Errorf("Error occured while configuring satellite service: %q", err)
+	}
 
 	return session, nil
 }

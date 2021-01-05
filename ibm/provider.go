@@ -517,6 +517,10 @@ func Provider() terraform.ResourceProvider {
 			//Added for Transit Gateway
 			"ibm_tg_gateway":    resourceIBMTransitGateway(),
 			"ibm_tg_connection": resourceIBMTransitGatewayConnection(),
+
+			//Added for satellite
+			"ibm_satellite_location": resourceIBMSatelliteLocation(),
+			"ibm_satellite_host":     resourceIBMSatelliteHost(),
 		},
 
 		ConfigureFunc: providerConfigure,
